@@ -134,4 +134,4 @@ eligibility engine) legible, but are natural next steps:
 
 ## License
 
-MIT — built as a portfolio project by [Castriq Technologies](https://castriq.co.ke).
+MIT — built as a portfolio project by [Castriq Technologies](https://castriq.com).
