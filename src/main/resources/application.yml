@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: sacco-loan-engine
+
+  datasource:
+    url: jdbc:h2:mem:saccodb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: {{ENC}}
+    password: { { ENC } }
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+sacco:
+  eligibility:
+    minimum-membership-months: 3
+    minimum-total-contribution: 5000
+    loan-multiplier: 3
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

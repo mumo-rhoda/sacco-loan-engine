@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: saccodb
+      POSTGRES_USER: sacco
+      POSTGRES_PASSWORD: sacco
+    ports:
+      - "5432:5432"
+    volumes:
+      - sacco_pg_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_URL: jdbc:postgresql://db:5432/saccodb
+      DB_USERNAME: sacco
+      DB_PASSWORD: sacco
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  sacco_pg_data:
